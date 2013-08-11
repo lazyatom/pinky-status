@@ -11,6 +11,7 @@
 <table>
   <thead>
     <tr>
+      <th>Date</th>
       <th>Time</th>
       <th>Event</th>
       <th>Source</th>
@@ -18,7 +19,8 @@
   <tbody>
     <% @events.each do |event| %>
       <tr>
-        <td><%= event.created_at %></td>
+        <td><%= event.created_at.strftime("%d %b %Y") %></td>
+        <td><%= event.created_at.strftime("%H:%m") %></td>
         <td><%= event.status %></td>
         <td><%= event.source %></td>
       </tr>
