@@ -1,6 +1,23 @@
-<h1>Events</h1>
-<ol>
-  <% @events.each do |event| %>
-    <li><%= event.created_at %></li>
-  <% end %>
-</ol>
+<table>
+  <thead>
+    <tr>
+      <th>Time</th>
+      <th>Event</th>
+      <th>Source</th>
+    </tr>
+  <tbody>
+    <% @events.each do |event| %>
+      <tr>
+        <td><%= event.created_at %></td>
+        <td><%= event.status %></td>
+        <td><%= event.source %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<form action="/event" method="post">
+  <input type="hidden" name="event[source]" value="manual">
+  <button type="submit" name="event[status]" value="in">Pinky is in</button>
+  <button type="submit" name="event[status]" value="out">Pinky is out</button>
+</form>
