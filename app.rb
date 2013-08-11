@@ -38,6 +38,6 @@ get "/" do
 end
 
 post "/event" do
-  Event.create!({created_at: Time.now, status: Event.next_status}.merge(params[:event]))
+  Event.create!({created_at: Time.now, status: Event.next_status}.merge(params[:event] || {}))
   redirect "/"
 end
