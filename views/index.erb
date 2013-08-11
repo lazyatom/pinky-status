@@ -1,0 +1,6 @@
+<h1>Events</h1>
+<ol>
+  <% @events.each do |event| %>
+    <li><%= event.created_at %></li>
+  <% end %>
+</ol>
