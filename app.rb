@@ -12,10 +12,17 @@ class Event
   property :status, Enum[:in, :out]
   property :created_at, DateTime
 
+  def self.most_recent
+    all(order: [:created_at.desc]).first
+  end
+
+  def self.most_recent_status
+    most_recent ? most_recent.status : nil
+  end
+
   def self.next_status
-    most_recent = all(order: [:created_at.desc]).first
-    if most_recent
-      most_recent.status == :in ? :out : :in
+    if most_recent_status
+      most_recent_status == :in ? :out : :in
     end
   end
 end
@@ -26,6 +33,7 @@ Event.auto_upgrade!
 
 get "/" do
   @events = Event.all
+  @most_recent_status = Event.most_recent_status
   erb :index
 end
 

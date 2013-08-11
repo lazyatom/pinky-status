@@ -1,3 +1,13 @@
+<h1>
+  Pink is <% @most_recent_status %>!
+</h1>
+
+<form action="/event" method="post">
+  <input type="hidden" name="event[source]" value="manual">
+  <button type="submit" name="event[status]" value="in">Pinky is in</button>
+  <button type="submit" name="event[status]" value="out">Pinky is out</button>
+</form>
+
 <table>
   <thead>
     <tr>
@@ -16,8 +26,3 @@
   </tbody>
 </table>
 
-<form action="/event" method="post">
-  <input type="hidden" name="event[source]" value="manual">
-  <button type="submit" name="event[status]" value="in">Pinky is in</button>
-  <button type="submit" name="event[status]" value="out">Pinky is out</button>
-</form>
