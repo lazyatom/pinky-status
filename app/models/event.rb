@@ -1,5 +1,6 @@
 class Event < ActiveRecord::Base
   before_create :infer_status
+  validate :no_events_in_the_same_minute
 
   def self.most_recent
     order(['created_at desc']).first
@@ -25,5 +26,11 @@ class Event < ActiveRecord::Base
 
   def infer_status
     self.status ||= self.class.next_status
+  end
+
+  def no_events_in_the_same_minute
+    if self.class.where("created_at >= ?", Time.now - 1.minute).any?
+      errors.add(:base, "looks like a dupliate event")
+    end
   end
 end
