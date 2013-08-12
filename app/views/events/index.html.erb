@@ -14,8 +14,8 @@
     <table class="table pull-right">
       <thead>
         <tr>
-          <th>Time</th>
           <th>Event</th>
+          <th>Time</th>
           <th>Source</th>
           <% if admin? %>
             <th>Remove</th>
@@ -24,8 +24,8 @@
       <tbody>
         <% @events.each do |event| %>
           <%= content_tag_for :tr, event do %>
+            <td><%= event.status %> <%= arrow(event.status) %></td>
             <td><%= event.created_at.to_s(:short) %></td>
-            <td><%= event.status %></td>
             <td><%= event.source %></td>
             <% if admin? %>
               <td><%= link_to event_path(event), :rel => "nofollow", method: :delete do %><i class="icon icon-remove"></i><span class="admin-link">remove</span><% end %></td>
