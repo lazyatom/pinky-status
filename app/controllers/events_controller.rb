@@ -3,7 +3,7 @@ class EventsController < ApplicationController
 
   def index
     @events = Event.all
-    @most_recent_status = Event.most_recent_status
+    @latest = Event.most_recent
   end
 
   def create

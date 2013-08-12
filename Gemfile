@@ -5,7 +5,7 @@ gem 'rails', '4.0.0'
 
 gem 'nokogiri' # declared before pg to avoid "WARNING: Nokogiri was built against LibXML version 2.8.0, but has dynamically loaded 2.7.8"
 gem 'pg'
-gem 'bootstrap-sass'
+gem 'bootstrap-sass', git: 'https://github.com/thomas-mcdonald/bootstrap-sass.git', branch: '3'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
