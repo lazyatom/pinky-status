@@ -17,7 +17,9 @@
           <th>Time</th>
           <th>Event</th>
           <th>Source</th>
-          <th>Remove</th>
+          <% if admin? %>
+            <th>Remove</th>
+          <% end %>
         </tr>
       <tbody>
         <% @events.each do |event| %>
@@ -25,7 +27,9 @@
             <td><%= event.created_at.to_s(:short) %></td>
             <td><%= event.status %></td>
             <td><%= event.source %></td>
-            <td><%= link_to event_path(event), :rel => "nofollow", method: :delete do %><i class="icon icon-remove"></i><% end %></td>
+            <% if admin? %>
+              <td><%= link_to event_path(event), :rel => "nofollow", method: :delete do %><i class="icon icon-remove"></i><% end %></td>
+            <% end %>
           </tr>
         <% end %>
       </tbody>
