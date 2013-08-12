@@ -23,14 +23,14 @@
         </tr>
       <tbody>
         <% @events.each do |event| %>
-          <tr>
+          <%= content_tag_for :tr, event do %>
             <td><%= event.created_at.to_s(:short) %></td>
             <td><%= event.status %></td>
             <td><%= event.source %></td>
             <% if admin? %>
-              <td><%= link_to event_path(event), :rel => "nofollow", method: :delete do %><i class="icon icon-remove"></i><% end %></td>
+              <td><%= link_to event_path(event), :rel => "nofollow", method: :delete do %><i class="icon icon-remove"></i><span class="admin-link">remove</span><% end %></td>
             <% end %>
-          </tr>
+          <% end %>
         <% end %>
       </tbody>
     </table>
