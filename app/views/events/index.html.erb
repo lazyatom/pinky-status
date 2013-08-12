@@ -2,12 +2,6 @@
   Pinky is <%= @most_recent_status %>!
 </h1>
 
-<form action="/event" method="post">
-  <input type="hidden" name="event[source]" value="manual">
-  <button type="submit" name="event[status]" value="in">Pinky is in</button>
-  <button type="submit" name="event[status]" value="out">Pinky is out</button>
-</form>
-
 <table>
   <thead>
     <tr>
@@ -23,8 +17,8 @@
         <td><%= event.created_at.strftime("%H:%m") %></td>
         <td><%= event.status %></td>
         <td><%= event.source %></td>
+        <td><%= button_to "remove", event_path(event), method: :delete %>
       </tr>
     <% end %>
   </tbody>
 </table>
-
