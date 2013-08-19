@@ -1,6 +1,6 @@
 module ApplicationHelper
   def admin?
-    params[:admin].present?
+    params[:admin].present? && params[:admin] == ENV["ADMIN_PASSWORD"]
   end
 
   def arrow(status)
