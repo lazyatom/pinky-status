@@ -23,7 +23,7 @@
         </tr>
       <tbody>
         <% @events.each do |event| %>
-          <%= content_tag_for :tr, event do %>
+          <%= content_tag_for :tr, event, title: "Event #{event.id}" do %>
             <td><%= event.status %> <%= arrow(event.status) %></td>
             <td><%= event.created_at.to_s(:short) %></td>
             <td><%= event.source %></td>
