@@ -2,7 +2,7 @@ class EventsController < ApplicationController
   skip_before_filter :verify_authenticity_token
 
   def index
-    @events = Event.order(['created_at desc']).all
+    @events = Event.order(['created_at desc']).page(params[:page]).per(50)
     @latest = Event.most_recent
   end
 
