@@ -22,6 +22,10 @@ class Event < ActiveRecord::Base
     [most_recent_out, most_recent_in]
   end
 
+  def invert
+    update_attribute(:status, (status == 'in' ? 'out' : 'in'))
+  end
+
   private
 
   def infer_status
