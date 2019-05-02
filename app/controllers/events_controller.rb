@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  skip_before_filter :verify_authenticity_token
+  skip_before_action :verify_authenticity_token
 
   def index
     @events = Event.order(['created_at desc']).page(params[:page]).per(50)
